@@ -1,0 +1,279 @@
+{% extends "_base.html" %}
+
+
+
+{% load static %}
+{% comment %} {% load humanize %} {% endcomment %}
+
+
+<!-- title section -->
+{% comment %} {% block title %}{% endblock title %} {% endcomment %}
+
+
+<!-- upper header section -->
+{% block header %}
+  {% include "components/header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block sidebar %}
+  {% include "components/sidebar.html" %}
+{% endblock sidebar %}
+
+<!--content -->
+{% block content %}
+<div class="sm:ml-44 -p-2 ml-0 xl:ml-44 xl:p-2">
+    <div class="xl:mt-18 mt-20 h-full">
+        <div class="flex flex-col lg:flex-row justify-between mt-10">
+            <div class="basis-9/12 mb-22">
+                <div class="flex justify-between mb-2.5">
+                    <div class="grid grid-cols-2 ml-2.5">
+                        <p class="flex flex-row items-center justify-evenly border-2 bg-slate-100 border-gray-400 mx-1 w-[5em] xl:w-[9em] font-medium text-sm rounded-xl text-center">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5"/>
+                            </svg>
+                                
+                            List 
+                        </p>
+                        <p class="py-2 font-medium text-sm px-8 w-[5em] xl:w-[9em] rounded-lg border-b shadow-inner ml-2 flex flex-row items-center justify-between">
+                            <svg class="w-5 h-5 text-gray-400 -ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2" d="M3 11h18m-9 0v8m-8 0h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
+                            </svg>                                      
+                            Board
+                        </p>
+                    </div>
+                    <div class="flex flex-row gap-4 items-center font-medium ml-20">
+                        <span class="text-[0.7em] xl:text-sm text-gray-400">
+                            Show
+                        </span>
+                        <div class="max-w-48 w-full h-10 shadow-inner">
+                            <form class="max-w-sm mx-auto">
+                                <select id="status" class="bg-transparent shadow-inner text-gray-900 text-sm rounded-lg block w-[5em] xl:w-24 p-2">
+                                    {% comment %} <option selected>All</option>
+                                    <option value="US">Urgent</option>
+                                    <option value="CA">Progress</option>
+                                    <option value="FR">On Hold</option>
+                                    <option value="DE">Germany</option> {% endcomment %}
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="text-xs font-medium ml-5 text-gray-500">
+                    17 result found
+                </span>
+
+                <div class="ml-4 mt-3 relative overflow-x-auto sm:rounded-lg">
+
+                    <div class="board mb-5 text-xs font-medium text-center border-b rounded-lg shadow flex flex-row">
+                        <div class="w-full focus-within:z-10 basis-1/2 text-start">
+                            <a href="#" class="inline-block w-full p-4 pl-5 text-gray-500 shadow-inner rounded-s-lg">Task name</a>
+                        </div>
+                        <div class="w-full focus-within:z-10 basis-1/4">
+                            <a href="#" class="inline-block w-full p-4 bg-white shadow-inner text-gray-500">Due in</a>
+                        </div>
+                        <div class=" w-full focus-within:z-10 basis-1/4">
+                            <a href="#" class="er:text-gray-700 inline-block w-full p-4 bg-white shadow-inner text-gray-500">Tasks</a>
+                        </div>
+                        <div class=" w-full focus-within:z-10 basis-1/4">
+                            <a href="#" class="inline-block w-full p-4 bg-white shadow-inner text-gray-500">Status</a>
+                        </div>
+                        <div class="w-full focus-within:z-10 basis-1/4">
+                            <a href="#" class="rounded-e-lg inline-block w-full p-4 bg-white shadow-inner text-gray-500">Members</a>
+                        </div>
+                    </div>
+
+                    <!-- ########### Table Cards ############### -->
+                    <div id="tasks">
+                        
+                    </div>                            
+                </div>                         
+
+            </div>
+            <div class="xl:relative basis-3/12 flex justify-end mr-5">
+                <div class="w-[90%]">
+                    <div class="flex flex-row items-center justify-between py-2">
+                        <span class="font-bold text-start text-xs xl:text-sm">
+                            Upcoming meeting
+                        </span>
+
+                        <small class="pr-2 text-[0.56em] xl:text-xs font-medium text-indigo-400">
+                            See all
+                        </small>
+                    </div>
+
+                    <div class="bg-green-200/[0.4] rounded-xl py-1 shadow-lg">
+                        <p class="font-bold p-2 text-xs xl:text-sm -mt-1 ml-1.5">
+                            Meeting Name
+                        </p>
+                        <p class="text-[0.56em] xl:text-[0.75em] text-start p-2 -mt-2 ml-1.5">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam inventore ea facilis?
+                            Lorem, ipsum dolor sit amet consectetur
+                        </p>
+
+                        <div class="max-w-sm mt-3 mb-1 pb-10 mx-1.5 bg-white h-[12em] border border-gray-200 rounded-lg shadow ">
+                            <div class="flex flex-row items-start justify-between p-1.5">
+                                <div class="font-medium flex flex-col text-sm">
+                                    <small class="text-gray-500">
+                                        Time
+                                    </small>
+                                    <span class="text-xs font-bold">
+                                        12:00-12:30
+                                    </span>
+                                </div>
+                                <div class="flex flex-col font-medium text-sm">
+                                    <small class="text-gray-500">
+                                        Duration
+                                    </small>
+                                    <span class="font-bold text-xs">
+                                        30 min
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col my-2 text-sm font-medium ml-3">
+                                <small class="text-gray-600">
+                                    Invited member
+                                </small>
+
+                                <div class="flex -space-x-1 rtl:space-x-reverse mt-1">
+                                    <img class="w-5 xl:w-7 h-5 xl:h-7 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/people.png" alt="">
+                                    <img class="w-5 xl:w-7 h-5 xl:h-7 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/capman.png" alt="">
+                                    <img class="w-5 xl:w-7 h-5 xl:h-7 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/avatar.png" alt="">
+                                    <a class="flex items-center justify-center w-5 xl:w-7 h-5 xl:h-7 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800" href="#">+3</a>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center mb-2 pb-3 py-2">
+                                <a href="#" class="bg-indigo-700/75 px-8 xl:px-14 py-3 text-xs font-semimedium text-white rounded-xl mt-2">
+                                    Join Meeting
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row items-center justify-start my-2">
+                        <h3 class="font-bold text-xs xl:text-sm">
+                            Upcoming Task
+                        </h3>
+                    </div>
+
+                    <div class="w-full max-w-sm h-28 bg-transparent rounded-lg border-2 text-xs shadow-xl mb-2">
+                        <div class="flex flex-row justify-between p-1.5 font-medium">
+                            <h2 class="font-bold lg:text-[0.9em]">
+                                Product Planning
+                            </h2>
+
+                            <div class="flex justify-end -mr-2">
+                                <p class="px-2 text-[0.7em] font-medium bg-yellow-300/50 pb-1 mb-3 py-1 rounded-lg">
+                                    Urgent
+                                </p>
+                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDot" data-dropdown-placement="bottom-start" class="inline-flex self-center items-center p-1 -mt-2.5 text-sm font-medium text-center text-gray-900 bg-transparent rounded-lg hover:bg-transparent focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-transparent dark:hover:bg-transparent dark:focus:ring-gray-600" type="button">
+                                    <svg class="w-3 h-3 text-black dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+                                        <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                                    </svg>
+                                </button>
+                                <div id="dropdownDot" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reply</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Forward</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start ml-2 -mt-4">
+                            <div class="flex -space-x-1 rtl:space-x-reverse">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/capman.png" alt="">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/people.png" alt="">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/avatar.png" alt="">
+                            </div>
+                            <div class="flex mt-2 md:mt-2 text-xs font-normal w-full gap-2">
+                                <div class="max-w-44 w-full bg-gray-100 rounded-full h-1 mb-4 shadow-inner">
+                                    <div class="bg-yellow-600 h-1 rounded-full dark:bg-yellow-300" style="width: 45%"></div>
+                                </div>
+                                <p class="w-full text-nowrap -mt-1.5 flex flex-row">
+                                    <svg class="w-4 h-4 text-gray-800 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    12:00-12:30
+                                </p>
+                            </div>
+                            <h5 class="mb-1 -mt-1.5 text-sm font-medium text-gray-900">Management</h5>
+                        </div>
+                    </div>
+                    <div class="w-full max-w-sm h-28 bg-transparent rounded-lg border-2 text-xs shadow-xl mb-2">
+                        <div class="flex flex-row justify-between p-1.5 font-medium">
+                            <h2 class="font-bold lg:text-[0.9em]">
+                                Product Planning
+                            </h2>
+
+                            <div class="flex justify-end -mr-2">
+                                <p class="px-2 text-[0.7em] font-medium bg-yellow-300/50 pb-1 mb-3 py-1 rounded-lg">
+                                    Urgent
+                                </p>
+                                <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDot" data-dropdown-placement="bottom-start" class="inline-flex self-center items-center p-1 -mt-2.5 text-sm font-medium text-center text-gray-900 bg-transparent rounded-lg hover:bg-transparent focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-transparent dark:hover:bg-transparent dark:focus:ring-gray-600" type="button">
+                                    <svg class="w-3 h-3 text-black dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+                                        <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                                    </svg>
+                                </button>
+                                <div id="dropdownDot" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reply</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Forward</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Copy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Delete</a>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start ml-2 -mt-4">
+                            <div class="flex -space-x-1 rtl:space-x-reverse">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/capman.png" alt="">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/people.png" alt="">
+                                <img class="w-5 h-5 border-2 border-white rounded-full dark:border-gray-800" src="/static/img/avatar.png" alt="">
+                            </div>
+                            <div class="flex mt-2 md:mt-2 text-xs font-normal w-full gap-2">
+                                <div class="max-w-44 w-full bg-gray-100 rounded-full h-1 mb-4 shadow-inner">
+                                    <div class="bg-yellow-600 h-1 rounded-full dark:bg-yellow-300" style="width: 45%"></div>
+                                </div>
+                                <p class="w-full text-nowrap -mt-1.5 flex flex-row">
+                                    <svg class="w-4 h-4 text-gray-800 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                    12:00-12:30
+                                </p>
+                            </div>
+                            <h5 class="mb-1 -mt-1.5 text-sm font-medium text-gray-900">Management</h5>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
