@@ -9,7 +9,7 @@ data.json
 initial.json
 environ
 environ/
-static/
+statics/
 ### Node ###
 # Logs
 logs
